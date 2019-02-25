@@ -1,0 +1,310 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+%\usepackage[spanish, es-noquoting]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm, mathtools}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows, babel}
+\usepackage{url}
+\urlstyle{rm}
+\usepackage[colorlinks=true,linktocpage=true,pagebackref=true,linkcolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphicx}
+%\usepackage[tocflat]{tocstyle}
+\usepackage{tocstyle}
+%\usepackage{tocbibind}
+
+%Fuentes caligráficas:
+%\usepackage{mathrsfs} %mathscr
+%\usepackage[mathscr]{eucal} %mathscr
+\usepackage[cal=euler,scr=boondoxo]{mathalfa}
+
+\usepackage{anyfontsize}
+
+%Fuente Palatino:
+%\usepackage[sc]{mathpazo}
+%Fuente Times:
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+%Fuente Libertine:
+%\usepackage{libertine}
+%\usepackage[libertine]{newtxmath}
+
+%Spanish
+%\newtheorem{thm}{Teorema}[section]
+%\newtheorem{prop}[thm]{Proposición}
+%\newtheorem{lema}{Lema}
+%\newtheorem{corol}[thm]{Corolario}
+%\theoremstyle{definition} \newtheorem{defn}[thm]{Definición}
+%\theoremstyle{definition} \newtheorem{ejemplo}[thm]{Ejemplo}
+%\theoremstyle{definition} \newtheorem{ejercicio}[thm]{Ejercicio}
+%\theoremstyle{remark} \newtheorem*{obs}{Observación}
+
+%English
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lema}{Lemma}
+\newtheorem{corol}[thm]{Corolary}
+\theoremstyle{definition} \newtheorem{defn}[thm]{Definition}
+\theoremstyle{definition} \newtheorem{ejemplo}[thm]{Example}
+\theoremstyle{definition} \newtheorem{ejercicio}[thm]{Exercise}
+\theoremstyle{remark} \newtheorem*{obs}{Remark}
+
+\def\pr{\mathrm{pr}}
+\def\gg{\mathfrak{g}}
+\def\xx{\mathtt{x}}
+\def\ad{\mathrm{ad}}
+
+%\def\CC{\mathbb{C}}
+%\def\ZZ{\mathbb{Z}}
+%\def\RR{\mathbb{R}}
+%\def\KK{\mathbb{K}}
+%\def\SF{\mathbb{S}}
+%\def\TT{\mathbb{T}}
+%\def\NN{\mathbb{N}}
+%\def\HH{\mathbb{H}}
+%\def\PP{\mathbb{P}}
+
+\def\CC{\mathbf{C}}
+\def\ZZ{\mathbf{Z}}
+\def\RR{\mathbf{R}}
+\def\KK{\mathbf{K}}
+\def\SF{\mathbf{S}}
+\def\TT{\mathbf{T}}
+\def\NN{\mathbf{N}}
+\def\HH{\mathbf{H}}
+\def\PP{\mathbf{P}}
+
+\def\id{\mathrm{id}}
+\def\im{\mathrm{im}\ }
+\def\End{\mathrm{End}}
+\def\Sym{\mathrm{Sym}}
+\def\Spec{\mathrm{Spec}}
+\def\tr{\mathrm{tr}}
+\def\cc{\mathbf{c}}
+\def\eps{\varepsilon}
+\def\OO{\mathscr{O}}
+\newcommand{\ve}[1]{\mathbf{#1}}
+
+\DeclarePairedDelimiter\esc{\langle}{\rangle}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+%%%        Otro formato para las secciones
+%\usepackage{titlesec}
+%\usepackage{remreset}
+%
+%\titleformat{\section}[block]
+%{\fontsize{12}{15}\bfseries\filcenter}
+%{\S\ \thesection.}
+%{1em}
+%{}
+%
+%\makeatletter
+%\@removefromreset{section}{chapter}
+%\makeatother
+%%%
+
+\title{Notes on Riemann Surfaces}
+\author{Guillermo Gallego Sánchez}
+\date{Last version: \today}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Generalities on Riemann Surfaces}
+
+\section{The definition of a Riemann Surface}
+\begin{defn}
+  An $n$-dimensional \emph{topological manifold} is a Hausdorff, second countable, topological space $X$ such that every point $p\in X$ has an open neighbourhood homeomorphic to an open set of $\RR^n$.
+  A $1$-dimensional topological manifold is called a (topological) \emph{curve}. A $2$-dimensional topological manifold is called a (topological) \emph{surface}.
+\end{defn}
+\begin{defn}
+  A \emph{Riemann surface} is a surface admitting an open cover $\mathfrak{U}$ and homeomorphisms $\varphi_U:U\rightarrow \CC$, for every $U\in \mathfrak{U}$ such that $\varphi_U\circ \varphi_V^{-1}:\CC \rightarrow \CC$ is a biholomorphism (bijective, holomorphic and with an holomorphic inverse) for every $U,V \in \mathfrak{U}$.
+
+ We say that a function $f:X\rightarrow \CC$ is \emph{holomorphic} at some point $p\in X$ if there exists an open set $U\in \mathfrak{U}$ such that $f\circ \varphi_U^{-1}: \CC \rightarrow \CC$ is holomorphic at $\varphi_U(p)$. We say that $f$ is holomorphic at a subset $S\subset X$ if it is holomorphic at $p$ for every $p\in S$. In particular, we say that $f$ is holomorphic at $X$ if it is holomorphic for every $p\in X$. We denote by $\OO_X(S)$ the set of holomorphic functions at $S$.
+\end{defn}
+
+[dibujo]
+
+\begin{defn}
+  A \emph{holomorphic (or complex-analytic) structure} $\OO_X$ on a topological surface $X$ assigns to every open set $U\subset X$ a set of continuous functions $\OO_X(U)\subset C(U,\CC)$ in such a way that:
+  \begin{enumerate}
+    \item For every $p\in X$, there exists an open neighbourhood $U$ of $p$ and a homeomorphism $\varphi_U:U\rightarrow \CC$ such that, for any open set $V\subset U$, 
+      \begin{equation*}
+	f\in \OO_X(V) \text{ if and only if } f\circ\varphi_U^{-1}:\CC \rightarrow \CC \text{ is holomorphic.} 
+      \end{equation*}
+      The pair $(U,\varphi_U)$ is called a \emph{holomorphic chart at $p$}.
+    \item If $f:U\rightarrow \CC$, where $U=\bigcup_i U_i$ and $U_i$ is open in $X$, then $f\in \OO_X(U)$ if and only if $f|_{U_i}\in \OO_X(U_i)$ for every $i$.
+  \end{enumerate}
+\end{defn}
+
+Of course, given a Riemann surface $X$, we have an holomorphic structure on $X$, namely, $\OO_X$. The converse is also true, if we have an holomorphic structure $\OO_X$ on a topological surface $X$, we can take the open cover $\mathfrak{U}=\left\{ U_p |p\in X \right\}$, where $U_p$ is the open neighbourhood of $p$ whose existence is guaranteed by condition 1. Indeed, this open cover turs $X$ into a Riemann surface: for every $U,V \in \mathfrak{U}$, $\varphi_U \circ \varphi_V^{-1}:\CC \rightarrow \CC$ is a biholomorphism. This is true because, since $U\cap V \subset U$ and $\varphi_U \circ \varphi_U^{-1}=\id_\CC$, $\varphi_U \in \OO_X(U\cap V)$, but this implies that $\varphi_U \circ \varphi_V^{-1}$ is holomorphic. The same argument shows that the inverse $(\varphi_U \circ \varphi_V^{-1})^{-1}=\varphi_V \circ \varphi_U^{-1}$ is holomorphic and we have a biholomorphism. Consequently, we can redefine a Riemann surface:
+\begin{defn}
+  A \emph{Riemann surface} is a pair $(X,\OO_X)$, where $X$ is a topological surface and $\OO_X$ is an holomorphic structure on $X$.
+\end{defn}
+
+\begin{defn}
+  Let $F:X\rightarrow Y$ be a continuous mapping between two surfaces, and $\OO_X$ a holomorphic structure on $X$. We define the \emph{pushforward holomorphic structure} $F_*\OO_X$ as the holomorphic structure on $Y$ that assigns to every open set $U\subset Y$ the set $F_*\OO_X(U)$ such that
+  \begin{equation*}
+    f \in F_*\OO_X(U) \text{ if and only if } f\circ F \in \OO_X(F^{-1}U).
+  \end{equation*}
+\end{defn}
+
+\begin{defn}
+  Let $(X,\OO_X)$ and $(Y,\OO_Y)$ be Riemann surfaces and $F:X\rightarrow Y$ a continuous mapping. We say that $F$ is a \emph{holomorphism} or a \emph{morphism of Riemann surfaces} if $F_*\OO_X = \OO_Y$. We say that $F$ is a \emph{biholomorphism} or an \emph{isomorphism of Riemann surfaces} if it is bijective, a holomorphism and $F^{-1}$ is a holomorphism. We can then define the \emph{category of Riemann surfaces} whose objects are Riemann surfaces and whose morphisms are the holomorphisms between Riemann surfaces.
+\end{defn}
+
+\begin{obs}
+  Since this work will be mainly centered in the study of Riemann surfaces, we have only considered Riemann surfaces in our definitions. Nevertheless, all these notions can be easily generalized to define \emph{$n$-dimensional complex manifolds}, just changing $\CC$ by $\CC^n$ in the definition of Riemann surface (for a reference on what a multivariable holomorphic map is and on other generalities of complex calculus on several variables, such as the Hartogs theorem, check out [Griffiths-Harris]). The definition of a holomorphic structure $\OO_X$ can be inmediately generalized to an $n$-dimensional topological manifold $X$ and we can see a complex manifold as a pair $(X,\OO_X)$. The equivalence of the two definitions is analogous to the case of Riemann surfaces, although in this case we have to consider the coordinate projections $\pr_i:\CC^n\rightarrow \CC$. This way, Riemann surfaces can be thought just as $1$-dimensional complex manifolds, that is, complex curves.
+
+  Note also that changing the word ``holomorphic'' by ``smooth'' and $\CC^n$ by $\RR^{2n}$, we can define \emph{smooth manifolds} and \emph{differentiable structures} on a similar fashion.
+\end{obs}
+
+\section{The tangent space}
+Let $X$ be a Riemann surface and $p\in X$. We define the \emph{set of germs of holomorphic functions at $p$} as
+\begin{equation*}
+  \OO_{X,p} = \varinjlim_{p\in U\subset X \text{ open}} \OO_X(U).
+\end{equation*}
+That is, $\OO_{X,p}$ is the quotient of set of functions that are holomorphic on some neighbourhood of $p$ by the equivalence relation that identifies two functions if they coincide on some other neighbourhood of $p$. We define $\TT_p X$ the \emph{holomorphic tangent space of $X$ at $p$} as the space of derivations on $\OO_{X,p}$; i.e. $\CC$-linear maps $D:\OO_{X,p} \rightarrow \CC$ satisfying the Leibniz rule
+\begin{equation*}
+  D(fg)=D(f)g(z) + f(z)D(g),
+\end{equation*}
+for all $f,g \in \OO_{X,p}$. This tangent space is a $1$-dimensional complex vector space. To give a basis of this space, we can fix a holomorphic chart $(U,\varphi_U)$ at $p$ so that $\TT_pX$ is generated by the derivation
+\begin{align*}
+  \partial_z|_p :\OO_{X,p}&\longrightarrow \CC\\ 
+  f &\longmapsto \frac{\partial(f\circ \varphi_U^{-1})}{\partial z}(z), 
+  \end{align*}
+  with $z=\varphi_U(p)\in \CC$.
+
+  Every holomorphic function $f:\CC \rightarrow \CC$ is in particular a smooth mapping $f:\RR^2 \rightarrow \RR^2$, thus a holomorphic structure on a topological surface $X$ gives in particular a differentiable structure, turning $X$ into a $2$-dimensional smooth manifold. By means of the germs of smooth functions, we can define in a similar way the ``usual'' tangent space at $p$, $T_pX$.
+  Taking the same holomorphic chart $(U,\varphi_U)$ and writing $\varphi_U(p)=z=x+iy$, we see that $T_pX_{\CC}$ is a $2$-dimensional real vector space generated by $\left\{ \partial_x|_p, \partial_y|_p \right\}$.
+  In order to relate $T_pX$ with $\TT_pX$, we consider the complexification
+  \begin{equation*}
+    T_pX_{\CC} = T_pX \otimes_\RR \CC,
+  \end{equation*}
+  and introduce the derivations
+  \begin{equation*}
+    \partial_z|_p = \frac{1}{2}(\partial_x|_p - i \partial_y|_p), \ \ \ \partial_{\bar{z}}|_p=\frac{1}{2}(\partial_x|_p + i \partial_y|_p).
+  \end{equation*}
+  This gives us a decomposition
+  \begin{equation*}
+    T_pX_{\CC} = T_p^{1,0}X \oplus T_p^{0,1}X,
+  \end{equation*}
+  where $T_p^{1,0}X$ is the subspace spanned by $\partial_z|_p$ and $T_p^{0,1}X$ the one spanned by $\partial_{\bar{z}}|_p$. Lets consider now a smooth mapping $f:X\rightarrow \CC$ of the form
+  \begin{align*}
+    f\circ \varphi^{-1}_U :\CC&\longrightarrow \CC\\ 
+      x+iy &\longmapsto u(x,y)+iv(x,y). 
+    \end{align*}
+    Then 
+    \begin{align*}
+      \partial_{\bar{z}}|_p f &= \frac{1}{2}\left[ \left(\frac{\partial u}{\partial x}(z)+i\frac{\partial v}{\partial x}(z)\right)+i\left( \frac{\partial u}{\partial y}(z)+i\frac{\partial v}{\partial y}(z)  \right) \right] \\ 
+      &=\frac{1}{2}\left[ \left(\frac{\partial u}{\partial x}(z)-\frac{\partial v}{\partial y}(z)\right)+i\left( \frac{\partial u}{\partial y}(z)+\frac{\partial v}{\partial x}(z)  \right) \right].
+    \end{align*}
+    Now, if $f$ is also holomorphic at $p$, it must satisfy the Cauchy-Riemann equations:
+\begin{align*}
+    \frac{\partial u}{\partial x}(z)=\frac{\partial v}{\partial y}(z), \\
+    \frac{\partial u}{\partial y}(z)=-\frac{\partial v}{\partial x}(z).
+\end{align*}
+Thus, we have that $\partial_{\bar{z}}|_p f = 0$. In conclusion, we get that
+\begin{equation*}
+  \TT_p X= T^{1,0}_p X=\mathrm{span}(\partial_z|_p).
+\end{equation*}
+
+Passing to differential forms, let us consider the complexified cotangent space $T^*_p X_\CC = T^*_pX \otimes_\RR \CC$. Taking the dual elements of the basis $\left\{ \partial_z|_p \partial_{\bar{z}}|_p \right\}$ we get the $1$-forms $\left\{ dz_p, d\bar{z}_p \right\}$. Thus, from the set of (real-valued) differential $1$-forms in a chart $(U,\varphi_U)$, $\Omega^1(U,\RR)$, we can define the set of \emph{complex-valued differential $1$-forms in $U$}, 
+\begin{equation*}
+  \Omega^1(U)=\Omega^1(U,\CC)=\Omega^1(U,\RR) \otimes_\RR \CC.
+\end{equation*}
+In general, we define $\Omega^k(U)=\Omega^k(U,\CC) = \Omega^k(U,\RR) \otimes_\RR \CC$. Of course, $\Omega^k(U)=\bigwedge^k \Omega^1(U)$.
+Dually to what we did with the complexified tangent space, we can decompose $T_p^*X_\CC = (T_p^{1,0}X)^* \oplus (T_p^{0,1}X)^*$, thus getting
+\begin{equation*}
+  \Omega^1(U)= \Omega^{1,0}(U) \oplus \Omega^{0,1}(U).
+\end{equation*}
+Equivalently, what we are saying is that every complex $1$-form $\omega \in \Omega^1(U)$ can be written as
+\begin{equation*}
+  \omega = \omega_{1,0} dz + \omega_{0,1} d\bar{z},
+\end{equation*}
+with $\omega_{1,0}, \omega_{0,1} : U \rightarrow \CC$ smooth functions.
+Taking exterior powers we can extend this decomposition to higher degree forms, getting a bigraduation
+\begin{equation*}
+  \Omega^k(U)=\bigoplus_{p+q=k}\Omega^{p,q}(U),
+\end{equation*}
+with
+\begin{equation*}
+  \Omega^{p,q}(U)=\left( \bigwedge^p \Omega^{1,0}(U) \right) \wedge \left( \bigwedge^q \Omega^{0,1}(U) \right).
+\end{equation*}
+Anyway, recall that $X$ is a Riemann surface, so $\Omega^k(U)=0$ for $k>2$. Thus, the only non-trivial case for this decomposition that we have not studied yet is the case of $2$-forms,
+\begin{equation*}
+  \Omega^2(U)=\Omega^{2,0}(U) \oplus \Omega^{1,1}(U) \oplus \Omega^{0,2}(U)=\Omega^{1,1}(U),
+\end{equation*}
+since $dz\wedge dz = d\bar{z} \wedge d\bar{z} =0$.
+That is, every $2$-form $\omega\in \Omega^2(U)$ can be written as
+\begin{equation*}
+  \omega = \omega_{1,1} dz \wedge d\bar{z},
+\end{equation*}
+with $\omega_{1,1}: U \rightarrow \CC$ an smooth function.
+
+This decomposition also gives a splitting of the exterior differential $d:\Omega^k(U)\rightarrow \Omega^{k+1}(U)$. For a $0$-form $f \in \Omega^0(U)=\Omega^{0,0}(U)=C^{\infty}(U,\CC)$, we have
+\begin{equation*}
+  df = \partial_z f dz + \partial_{\bar{z}}f d\bar{z}.
+\end{equation*}
+We can define then the operators 
+\begin{align*}
+  \partial :\Omega^0(U)&\longrightarrow \Omega^{1,0}(U)\\ 
+    f &\longmapsto \partial_z f dz, 
+  \end{align*}
+  and
+\begin{align*}
+  \bar{\partial} :\Omega^0(U)&\longrightarrow \Omega^{0,1}(U)\\ 
+  f &\longmapsto \partial_{\bar{z}} f d\bar{z}, 
+  \end{align*}
+  so that
+\begin{equation*}
+  df = \partial f + \bar{\partial} f.
+\end{equation*}
+For a $1$-form $\omega=\omega_{1,0} dz + \omega_{0,1} d\bar{z}$, we get
+\begin{equation*}
+  d\omega = \partial_{\bar{z}} \omega_{1,0} d\bar{z} \wedge dz + \partial_z \omega_{0,1} dz \wedge d\bar{z}= (\partial_z \omega_{0,1} - \partial_{\bar{z}}\omega_{1,0}) dz \wedge d\bar{z}.
+\end{equation*}
+We can define then the operators
+\begin{align*}
+  \bar{\partial} :\Omega^{1,0}(U)&\longrightarrow \Omega^{1,1}(U)\\ 
+  \omega dz &\longmapsto \partial_{\bar{z}} \omega d\bar{z}\wedge dz 
+  \end{align*}
+  and
+\begin{align*}
+  \partial :\Omega^{0,1}(U)&\longrightarrow \Omega^{1,1}(U)\\ 
+  \omega d\bar{z} &\longmapsto \partial_{z} \omega dz\wedge d\bar{z}, 
+  \end{align*}
+  and the projections
+  \begin{align*}
+    \pr_{1,0} :\Omega^1(U)&\longrightarrow \Omega^{1,0}(U)\\ 
+    \omega_{1,0} dz + \omega_{0,1} d\bar{z} &\longmapsto \omega_{1,0}dz
+    \end{align*}
+    and
+  \begin{align*}
+    \pr_{0,1} :\Omega^1(U)&\longrightarrow \Omega^{0,1}(U)\\ 
+    \omega_{1,0} dz + \omega_{0,1} d\bar{z} &\longmapsto \omega_{0,1}d\bar{z},
+    \end{align*}
+    so that
+    \begin{equation*}
+      d\omega = \bar{\partial} \pr_{1,0}\omega + \partial \pr_{0,1} \omega.
+    \end{equation*}
+    Diagramatically, we have 
+    \begin{center}
+      \begin{tikzcd}
+	0 \arrow{r} & \CC \arrow[hook]{r} & \Omega^0(U) \arrow{r}{d} & \Omega^1(U) \arrow{r}{d} & \Omega^2(U) \arrow{r}{d} & 0 	\\ 
+	& & & \Omega^{1,0}(U)\arrow{rd}{\bar{\partial}}\arrow[bend left]{rrd}{\partial} & & \\
+	0 \arrow{r} & \CC \arrow[hook]{r} & \Omega^{0,0}(U) \arrow{ru}{\partial} \arrow{rd}{\bar{\partial}} & &  \Omega^{1,1}(U) \arrow[shift left]{r}{\partial}  \arrow[shift right]{r}[anchor=north]{\bar{\partial}}& 0.\\
+	& & & \Omega^{0,1}(U)\arrow{ru}{\partial} \arrow[bend right]{rru}{\bar{\partial}} & & 
+      \end{tikzcd}
+    \end{center}
+
+    
+
+    \section{Sheaves and cohomology}
+    \subsection{Presheaves and sheaves}
+\end{document}
