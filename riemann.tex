@@ -19,18 +19,18 @@
 %Fuentes caligráficas:
 %\usepackage{mathrsfs} %mathscr
 %\usepackage[mathscr]{eucal} %mathscr
-\usepackage[cal=euler,scr=boondoxo]{mathalfa}
+\usepackage[scr=boondoxo]{mathalfa}
 
 \usepackage{anyfontsize}
 
 %Fuente Palatino:
 %\usepackage[sc]{mathpazo}
 %Fuente Times:
-\usepackage{newtxtext}
-\usepackage{newtxmath}
+%\usepackage{newtxtext}
+%\usepackage{newtxmath}
 %Fuente Libertine:
-%\usepackage{libertine}
-%\usepackage[libertine]{newtxmath}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
 
 %Spanish
 %\newtheorem{thm}{Teorema}[section]
@@ -57,25 +57,25 @@
 \def\xx{\mathtt{x}}
 \def\ad{\mathrm{ad}}
 
-%\def\CC{\mathbb{C}}
-%\def\ZZ{\mathbb{Z}}
-%\def\RR{\mathbb{R}}
-%\def\KK{\mathbb{K}}
-%\def\SF{\mathbb{S}}
-%\def\TT{\mathbb{T}}
-%\def\NN{\mathbb{N}}
-%\def\HH{\mathbb{H}}
-%\def\PP{\mathbb{P}}
+\def\CC{\mathbb{C}}
+\def\ZZ{\mathbb{Z}}
+\def\RR{\mathbb{R}}
+\def\KK{\mathbb{K}}
+\def\SF{\mathbb{S}}
+\def\TT{\mathbb{T}}
+\def\NN{\mathbb{N}}
+\def\HH{\mathbb{H}}
+\def\PP{\mathbb{P}}
 
-\def\CC{\mathbf{C}}
-\def\ZZ{\mathbf{Z}}
-\def\RR{\mathbf{R}}
-\def\KK{\mathbf{K}}
-\def\SF{\mathbf{S}}
-\def\TT{\mathbf{T}}
-\def\NN{\mathbf{N}}
-\def\HH{\mathbf{H}}
-\def\PP{\mathbf{P}}
+%\def\CC{\mathbf{C}}
+%\def\ZZ{\mathbf{Z}}
+%\def\RR{\mathbf{R}}
+%\def\KK{\mathbf{K}}
+%\def\SF{\mathbf{S}}
+%\def\TT{\mathbf{T}}
+%\def\NN{\mathbf{N}}
+%\def\HH{\mathbf{H}}
+%\def\PP{\mathbf{P}}
 
 \def\id{\mathrm{id}}
 \def\im{\mathrm{im}\ }
@@ -86,6 +86,7 @@
 \def\cc{\mathbf{c}}
 \def\eps{\varepsilon}
 \def\OO{\mathscr{O}}
+\def\FF{\mathscr{F}}
 \newcommand{\ve}[1]{\mathbf{#1}}
 
 \DeclarePairedDelimiter\esc{\langle}{\rangle}
@@ -123,9 +124,9 @@
   A $1$-dimensional topological manifold is called a (topological) \emph{curve}. A $2$-dimensional topological manifold is called a (topological) \emph{surface}.
 \end{defn}
 \begin{defn}
-  A \emph{Riemann surface} is a surface admitting an open cover $\mathfrak{U}$ and homeomorphisms $\varphi_U:U\rightarrow \CC$, for every $U\in \mathfrak{U}$ such that $\varphi_U\circ \varphi_V^{-1}:\CC \rightarrow \CC$ is a biholomorphism (bijective, holomorphic and with an holomorphic inverse) for every $U,V \in \mathfrak{U}$.
+  A \emph{Riemann surface} is a surface admitting an open cover $\mathcal{U}$ and homeomorphisms $\varphi_U:U\rightarrow \CC$, for every $U\in \mathcal{U}$ such that $\varphi_U\circ \varphi_V^{-1}:\CC \rightarrow \CC$ is a biholomorphism (bijective, holomorphic and with an holomorphic inverse) for every $U,V \in \mathcal{U}$.
 
- We say that a function $f:X\rightarrow \CC$ is \emph{holomorphic} at some point $p\in X$ if there exists an open set $U\in \mathfrak{U}$ such that $f\circ \varphi_U^{-1}: \CC \rightarrow \CC$ is holomorphic at $\varphi_U(p)$. We say that $f$ is holomorphic at a subset $S\subset X$ if it is holomorphic at $p$ for every $p\in S$. In particular, we say that $f$ is holomorphic at $X$ if it is holomorphic for every $p\in X$. We denote by $\OO_X(S)$ the set of holomorphic functions at $S$.
+ We say that a function $f:X\rightarrow \CC$ is \emph{holomorphic} at some point $p\in X$ if there exists an open set $U\in \mathcal{U}$ such that $f\circ \varphi_U^{-1}: \CC \rightarrow \CC$ is holomorphic at $\varphi_U(p)$. We say that $f$ is holomorphic at a subset $S\subset X$ if it is holomorphic at $p$ for every $p\in S$. In particular, we say that $f$ is holomorphic at $X$ if it is holomorphic for every $p\in X$. We denote by $\OO_X(S)$ the set of holomorphic functions at $S$.
 \end{defn}
 
 [dibujo]
@@ -142,7 +143,7 @@
   \end{enumerate}
 \end{defn}
 
-Of course, given a Riemann surface $X$, we have an holomorphic structure on $X$, namely, $\OO_X$. The converse is also true, if we have an holomorphic structure $\OO_X$ on a topological surface $X$, we can take the open cover $\mathfrak{U}=\left\{ U_p |p\in X \right\}$, where $U_p$ is the open neighbourhood of $p$ whose existence is guaranteed by condition 1. Indeed, this open cover turs $X$ into a Riemann surface: for every $U,V \in \mathfrak{U}$, $\varphi_U \circ \varphi_V^{-1}:\CC \rightarrow \CC$ is a biholomorphism. This is true because, since $U\cap V \subset U$ and $\varphi_U \circ \varphi_U^{-1}=\id_\CC$, $\varphi_U \in \OO_X(U\cap V)$, but this implies that $\varphi_U \circ \varphi_V^{-1}$ is holomorphic. The same argument shows that the inverse $(\varphi_U \circ \varphi_V^{-1})^{-1}=\varphi_V \circ \varphi_U^{-1}$ is holomorphic and we have a biholomorphism. Consequently, we can redefine a Riemann surface:
+Of course, given a Riemann surface $X$, we have an holomorphic structure on $X$, namely, $\OO_X$. The converse is also true, if we have an holomorphic structure $\OO_X$ on a topological surface $X$, we can take the open cover $\mathcal{U}=\left\{ U_p |p\in X \right\}$, where $U_p$ is the open neighbourhood of $p$ whose existence is guaranteed by condition 1. Indeed, this open cover turs $X$ into a Riemann surface: for every $U,V \in \mathcal{U}$, $\varphi_U \circ \varphi_V^{-1}:\CC \rightarrow \CC$ is a biholomorphism. This is true because, since $U\cap V \subset U$ and $\varphi_U \circ \varphi_U^{-1}=\id_\CC$, $\varphi_U \in \OO_X(U\cap V)$, but this implies that $\varphi_U \circ \varphi_V^{-1}$ is holomorphic. The same argument shows that the inverse $(\varphi_U \circ \varphi_V^{-1})^{-1}=\varphi_V \circ \varphi_U^{-1}$ is holomorphic and we have a biholomorphism. Consequently, we can redefine a Riemann surface:
 \begin{defn}
   A \emph{Riemann surface} is a pair $(X,\OO_X)$, where $X$ is a topological surface and $\OO_X$ is an holomorphic structure on $X$.
 \end{defn}
@@ -302,9 +303,89 @@ We can define then the operators
 	& & & \Omega^{0,1}(U)\arrow{ru}{\partial} \arrow[bend right]{rru}{\bar{\partial}} & & 
       \end{tikzcd}
     \end{center}
-
-    
+Note in particular the segment
+\begin{center}
+  \begin{tikzcd}
+    \Omega^{1,0}(U) \arrow{r}{\bar{\partial}} & \Omega^{1,1}(U) \arrow{r}{\bar{\partial}} & 0,
+  \end{tikzcd}
+\end{center}
+and consider the \emph{set of holomophic differential $1$-forms in $U$}:
+\begin{equation*}
+  \boldsymbol{\Omega}^1(U) = \ker(\bar{\partial}: \Omega^{1,0} \rightarrow \Omega^{1,1}).
+\end{equation*}
+In particular, an element in $\boldsymbol{\Omega}^1(U)$ is of the form
+\begin{equation*}
+  \omega dz,
+\end{equation*}
+where $\omega:U\rightarrow \CC$ is a holomorphic function (so that $\partial_{\bar{z}}\omega=0$).
+We also have the following result [Griffiths-Harris]:
+\begin{prop}[$\bar{\partial}$-Poincaré Lemma]
+  Let $D\subset \CC$ be an open disk and $\omega \in C^\infty(\bar{D})$ a function. The function
+  \begin{equation*}
+    \alpha(z) = \frac{1}{2\pi i}\int_D \frac{\omega(w)}{w-z} dw \wedge d\bar{w},
+  \end{equation*}
+  is in $C^\infty(D)$ and satisfies
+  \begin{equation*}
+    \frac{\partial \alpha}{\partial \bar{z}}=\omega.
+  \end{equation*}
+\end{prop}
+Therefore, for every $\omega d\bar{z}\wedge dz \in \Omega^{1,1}(U)$ we can choose a disk $D \subset U$ and the function
+  \begin{equation*}
+    \alpha(z) = \frac{1}{2\pi i}\int_D \frac{\omega(w)}{w-z} dw \wedge d\bar{w}
+  \end{equation*}
+  satisfies $\partial_{\bar{z}} \alpha = \omega$, so that
+  \begin{equation*}
+    \omega d\bar{z}\wedge dz = \bar{\partial}(\alpha dz),
+  \end{equation*}
+  in $D$. In conclusion, the mapping $\bar{\partial}:\Omega^{1,0}(D) \rightarrow \Omega^{1,1}(D)$ is surjective and the sequence
+  \begin{center}
+    \begin{tikzcd}      
+      0 \arrow{r}& \boldsymbol{\Omega}^1(D) \arrow[hook]{r}& \Omega^{1,0}(D) \arrow{r}{\bar{\partial}} & \Omega^{1,1}(D) \arrow{r}{\bar{\partial}} & 0
+    \end{tikzcd}
+  \end{center}
+  is exact.
 
     \section{Sheaves and cohomology}
     \subsection{Presheaves and sheaves}
+    Let $X$ be a topological space and consider the category $\ve{Op}(X)$ whose objects are the nonempty open sets in $X$ and such that, if $U, V \subset X$ are open sets
+    \begin{equation*}
+      \mathrm{Hom}_{\ve{Op}(X)}(U,V)=
+      \begin{cases}
+	U \hookrightarrow V, & \text{if } U\subset V, \\
+	\varnothing, & \text{otherwise.}
+      \end{cases}
+    \end{equation*}
+    \begin{defn}
+      A \emph{presheaf} over a category $\mathcal{C}$ is a contravariant functor $\mathscr{F}: \ve{Op}(X) \rightarrow \mathcal{C}$. 
+    \end{defn}
+    In other words, a presheaf assigns to every nonempty open set $U\subset X$ an object $\mathscr{F}(U)$ and, to every pair of sets $U$ and $V$ such that $V\subset U$, a morphism 
+    \begin{equation*}
+      r^U_V: \mathscr{F}(U) \rightarrow \FF(V),
+    \end{equation*}
+    satisfying that $r^U_U = \id_U$ and, if $W\subset V \subset U$, $r^U_W= r^V_W \circ r^U_V$. If $\mathcal{C}=\ve{Ring}$, $\ve{Grp}$, $\ve{Set}$ or $\ve{Ab}$, we say that $\FF$ is a presheaf of rings, groups, sets or abelian groups, respectively. From now on $\mathcal{C}$ will be a category of sets like one of the list that we just stated and the elements of a set $\FF(U)$ will be called \emph{sections of $\FF$ over $U$}.
+
+    \begin{defn}
+      A presheaf $\FF$ is called a \emph{sheaf} if for every collection $\mathcal{U}$ of open subsets of $X$, calling $U=\bigcup_{V\in \mathcal{U}} V$, the following conditions are satisfied:
+      \begin{enumerate}
+	\item \emph{Axiom of locality}: If $s,t \in \FF(U)$ and $r^U_{V}(s)=r^U_{V}(t)$ for every $V\in \mathcal{U}$, then $s=t$.
+	\item \emph{Axiom of gluing}: Consider a family of sections $\left\{ s_V: V\in \mathcal{U} \right\}$. If for every $V,W \in \mathcal{U}$ such that $V\cap W \neq \varnothing$ we have
+	  \begin{equation*}
+	    r^{V}_{V\cap W}(s_V)=r^{W}_{V\cap W}(s_W),
+	  \end{equation*}
+	  then there exists an $s\in \FF(U)$ such that $r^U_V(s)=s_V$ for all $V\in \mathcal{U}$.
+      \end{enumerate}
+    \end{defn}
+
+    \begin{defn}
+      If $\FF$ and $\mathscr{G}$ are two presheaves (respectively, two sheaves), a morphism of presheaves (sheaves) is a natural transformation $h:\FF\rightarrow \mathscr{G}$. 
+    \end{defn}
+    In other words, if $\FF$ and $\mathscr{G}$ are two sheaves or two presheaves a morphism $h:\FF \rightarrow \mathscr{G}$ is a collection of morphisms $h_U:\FF(U) \rightarrow \mathscr{G}(U)$ for each open set $U\subset X$ such that the following diagram commutes
+    \begin{center}
+      \begin{tikzcd}
+	\FF(U)	\arrow{rr}{h_U}\arrow{dd}[anchor=east]{r^U_V} && \mathscr{G}(U)\arrow{dd}[anchor=west]{r^U_V} \\ 
+	 && \\
+	 \FF(V)\arrow{rr}[anchor=south]{h_V} && \mathscr{G}(V),
+       \end{tikzcd}
+     \end{center}
+     for any $V\subset U \subset X$ open sets. If the maps $h_U$ are inclusions, $\FF$ is said to be a \emph{subpresheaf} or a \emph{subsheaf} of $\mathscr{G}$.
 \end{document}
