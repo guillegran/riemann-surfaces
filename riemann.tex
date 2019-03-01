@@ -82,6 +82,7 @@
 \def\End{\mathrm{End}}
 \def\Sym{\mathrm{Sym}}
 \def\Spec{\mathrm{Spec}}
+\def\coker{\mathrm{coker}}
 \def\tr{\mathrm{tr}}
 \def\cc{\mathbf{c}}
 \def\eps{\varepsilon}
@@ -356,23 +357,23 @@ Therefore, for every $\omega d\bar{z}\wedge dz \in \Omega^{1,1}(U)$ we can choos
       \end{cases}
     \end{equation*}
     \begin{defn}
-      A \emph{presheaf} over a category $\mathcal{C}$ is a contravariant functor $\mathscr{F}: \ve{Op}(X) \rightarrow \mathcal{C}$. 
+      A \emph{presheaf} over a category $\mathscr{C}$ is a contravariant functor $\mathscr{F}: \ve{Op}(X) \rightarrow \mathscr{C}$. 
     \end{defn}
     In other words, a presheaf assigns to every nonempty open set $U\subset X$ an object $\mathscr{F}(U)$ and, to every pair of sets $U$ and $V$ such that $V\subset U$, a morphism 
     \begin{equation*}
       r^U_V: \mathscr{F}(U) \rightarrow \FF(V),
     \end{equation*}
-    satisfying that $r^U_U = \id_U$ and, if $W\subset V \subset U$, $r^U_W= r^V_W \circ r^U_V$. If $\mathcal{C}=\ve{Ring}$, $\ve{Grp}$, $\ve{Set}$ or $\ve{Ab}$, we say that $\FF$ is a presheaf of rings, groups, sets or abelian groups, respectively. From now on $\mathcal{C}$ will be a category of sets like one of the list that we just stated and the elements of a set $\FF(U)$ will be called \emph{sections of $\FF$ over $U$}.
+    satisfying that $r^U_U = \id_U$ and, if $W\subset V \subset U$, $r^U_W= r^V_W \circ r^U_V$. If $\mathscr{C}=\ve{Ring}$, $\ve{Grp}$, $\ve{Set}$ or $\ve{Ab}$, we say that $\FF$ is a presheaf of rings, groups, sets or abelian groups, respectively. From now on $\mathscr{C}$ will be a category of sets like one of the list that we just stated. In this case, the elements of a set $\FF(U)$ will be called \emph{sections of $\FF$ over $U$} and, if $s\in \FF(U)$ and $V\subset U$, we will write $s|_V=r^U_V(s)$.
 
     \begin{defn}
-      A presheaf $\FF$ is called a \emph{sheaf} if for every collection $\mathcal{U}$ of open subsets of $X$, calling $U=\bigcup_{V\in \mathcal{U}} V$, the following conditions are satisfied:
+      A presheaf $\FF$ is called a \emph{sheaf} if for every open cover $\mathcal{U}$ of any open set $U\subset X$, the following conditions are satisfied:
       \begin{enumerate}
-	\item \emph{Axiom of locality}: If $s,t \in \FF(U)$ and $r^U_{V}(s)=r^U_{V}(t)$ for every $V\in \mathcal{U}$, then $s=t$.
+	\item \emph{Axiom of locality}: If $s,t \in \FF(U)$ and $s|_V=t|_V$ for every $V\in \mathcal{U}$, then $s=t$.
 	\item \emph{Axiom of gluing}: Consider a family of sections $\left\{ s_V: V\in \mathcal{U} \right\}$. If for every $V,W \in \mathcal{U}$ such that $V\cap W \neq \varnothing$ we have
 	  \begin{equation*}
-	    r^{V}_{V\cap W}(s_V)=r^{W}_{V\cap W}(s_W),
+	    s_V|_{V\cap W}=s_W|_{V\cap W},
 	  \end{equation*}
-	  then there exists an $s\in \FF(U)$ such that $r^U_V(s)=s_V$ for all $V\in \mathcal{U}$.
+	  then there exists an $s\in \FF(U)$ such that $s|_V=s_V$ for all $V\in \mathcal{U}$.
       \end{enumerate}
     \end{defn}
 
@@ -388,4 +389,31 @@ Therefore, for every $\omega d\bar{z}\wedge dz \in \Omega^{1,1}(U)$ we can choos
        \end{tikzcd}
      \end{center}
      for any $V\subset U \subset X$ open sets. If the maps $h_U$ are inclusions, $\FF$ is said to be a \emph{subpresheaf} or a \emph{subsheaf} of $\mathscr{G}$.
+
+     \begin{ejemplo}
+       Let us define some of the sheaves that we are going to consider during these notes. 
+       \begin{enumerate}
+	 \item If $X$ is any topological space, we can consider the \emph{presheaf of $Y$-valued continuous mappings on $X$}, denoted by $C_X(-,Y)$, where $Y$ is any topological space: for every open set $U\subset X$, $C_X(U,Y)$ is the set of continuous mappings $U\rightarrow Y$ and the morphisms $r^U_V$ are just the restrictions of functions. This presheaf clearly satisfies the axioms of locality and gluing, so it is a sheaf. If $Y=\RR$ or $\CC$, $C_X(-,Y)$ is called the \emph{sheaf of real-valued (respectively, complex-valued) continuous functions}.
+	 \item If $X$ is an smooth manifold, we can consider the \emph{sheaf of $Y$-valued smooth mappings on $X$}, denoted by $C^\infty_X(-,Y)$, where $Y$ is any smooth manifold as the subsheaf of $C_X(-,Y)$ of continuous mappings that are smooth. If $Y=\RR$ or $\CC$, this is called the \emph{sheaf of real-valued (respectively, complex-valued) smooth functions}.
+	 \item If $X$ is a complex manifold, we consider the \emph{sheaf of holomorphic functions on $X$}, denoted by $\OO_X$ as the subsheaf of $C^{\infty}_X(-,\CC)$ of functions that are holomorphic. Note that this sheaf is precisely the holomorphic structure on $X$, this is why it is also called the \emph{structure sheaf on $X$}. We can also consider the subsheaf $\OO_X^*$ of $\OO_X$ of nonzero holomorphic functions.
+	 \item If $X$ is a Riemann surface, we consider the \emph{sheaf of smooth complex differential forms of type $(p,q)$}, denoted by $\Omega_X^{p,q}$: to any open subset $U\subset X$ we assign the set $\Omega_X^{p,q}(U)=\Omega^{p,q}(U)$.
+	 \item If $X$ is a Riemann surface, we consider the \emph{sheaf of holomorphic differential $1$-forms}, denoted by $\boldsymbol{\Omega}^1_X$ as the subsheaf of $\Omega^{1,0}_X$ of $1$-forms that are holomorphic.
+       \qed
+       \end{enumerate}
+     \end{ejemplo}
+
+     \begin{ejemplo}[Presheaves that are not sheaves]
+	 Consider $\CC^*=\CC\setminus \left\{ 0 \right\}$ and the morphism of sheaves $\exp:\OO_{\CC^*} \rightarrow \OO_{\CC^*}^*$ defined by
+	   \begin{align*}
+	     \exp_U :\OO_{\CC^*}(U)&\longrightarrow \OO^*_{\CC^*}(U)\\ 
+	     f &\longmapsto e^{2\pi i f}. 
+	     \end{align*}
+	     Note now that the complex logarithm is not globally defined on $\CC^*$ but it is defined on every simply connected open subset $U\subset \CC^*$. Thus, if we consider the function $f(z)=z$, $f\in \OO_{\CC^*}^*(\CC^*)$ and $f\not \in \exp(\OO_{\CC^*}(\CC^*))$, but $f|_U\in \exp(\OO_{\CC^*}(U))$ if $U\subset \CC^*$ is simply connected. We can define then the presheaf $\exp(\OO_{\CC^*}(-))$ with the natural restriction morphisms but we can cover $\CC^*$ by simply connected open sets $U$ where $f$ has a logarithm, so that $f|_U \in \exp(\OO_{\CC^*}(U))$ but these $f|_U$ are not restrictions of a globally defined $f\in \exp(\OO_{\CC^*}(\CC^*))$. Therefore, this presheaf violates the axiom of gluing, so it is not a sheaf. Dually, we can consider the presheaf $\coker(\exp)$ defined by
+	     \begin{equation*}
+	       \coker(\exp)(U)=\OO^*_{\CC^*}(U)/\exp(\OO_{\CC^*}(U)).
+	     \end{equation*}
+	     By the same argument as before, $f|_U=0 \in \coker(\exp)(U)$ for every $U\subset \CC^*$ simply connected, but $f \neq 0$ in $\coker(\exp)(\CC^*)$. In this case, we have that $\coker(\exp)$ violates the axiom of locality so we conclude that it is not a sheaf.
+\qed
+     \end{ejemplo}
+     \subsubsection{Sheafification}
 \end{document}
